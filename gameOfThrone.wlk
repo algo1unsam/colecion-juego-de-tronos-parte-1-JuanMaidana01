@@ -1,22 +1,23 @@
-object daenerys{
+object daenerys {
     const property artefactos = #{}
-    const property artefactos_rocadragon = #{}
-    const property historial_artefactos = {}
+    const property limiteInventario = 2 
     
     method encontrar(_artefacto) {
-        if ( artefactos.size() <= 1){
+        if ( artefactos.size() < limiteInventario)
             artefactos.add(_artefacto)
-            return}
-        return "Limite alcanzado"
     }
 
     method volverACasa() {
-        artefactos_rocadragon.addAll(artefactos)
+        castillo.agregarArtefactos(artefactos)
         artefactos.clear()
     }
+}
 
-    method listar_artefactos() {
-        return artefactos+artefactos_rocadragon
+object castillo {
+    const property artefactos = #{}
+
+    method agregarArtefactos(items) {
+        artefactos.addAll(items)
     }
 }
 
